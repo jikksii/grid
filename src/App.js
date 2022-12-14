@@ -24,6 +24,10 @@ const DESIGN = [300,320,340,360,380,381,382,383,384,361,341,362,301,281,301,323,
   61,42,22,23,24,45,66,87,108,234,255,256,277,278,298,318,317,316,336,337,338,355,356,357,358,375,376,377,378,394,395,396,397,398,399,352,332,312,291,293,274,302,373,
   304,285,266,247,228,209,190,171,152,133,114,95,74,116
 ]
+
+const BLOCKCHAIN = [48, 49, 50, 71, 92, 112, 132, 152, 171, 190, 189, 188, 167, 146, 126, 106, 86, 67, 88, 90, 109, 129,
+   149, 169, 153, 174, 195, 215, 235, 236, 257, 278, 298, 318, 338, 357, 376, 375, 374, 353,332, 312, 292, 272, 253, 234, 274, 276, 295, 315, 335, 355, 371, 390, 
+  389, 368, 347, 327, 307, 267, 246, 225, 224, 223, 242, 261, 281, 301, 321, 342, 363, 364, 346, 344, 324, 304, 284, 263, 265, 204, 184, 165,352,287,365,166]
 function App() {
 
   const handleIndexesChange = (indexes) => {
@@ -38,7 +42,7 @@ function App() {
       <button onClick={() => handleIndexesChange([])}>Empty</button>
       <button onClick={() => handleIndexesChange(MOB)}>Mobile</button>
       <button onClick={() => handleIndexesChange(WEB)}>WEB</button>
-      <button onClick={() => handleIndexesChange([])}>BLOCKCHAIN</button>
+      <button onClick={() => handleIndexesChange(BLOCKCHAIN)}>BLOCKCHAIN</button>
       <button onClick={() => handleIndexesChange(DESIGN)}>Design</button>
       <button onClick={() => handleIndexesChange(GAME)}>GAME</button>
     </div>
