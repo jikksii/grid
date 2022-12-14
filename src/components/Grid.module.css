@@ -1,5 +1,10 @@
 .grid-container{
     display: grid;
-    background-color: #2196F3;
     grid-template-columns: repeat(20,auto);
+    max-height: 400px;
+    max-width: 400px;
+
+    width: 300px;
+    height: 300px;
+    padding: 5px;
 }

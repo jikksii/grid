@@ -10,7 +10,7 @@ const GridItem = ({index,isSelected})=>{
     }
     return (
         <div className={`${styles['grid-item']} ${isClicked || isSelected ?  styles['clicked']: ""}`} onClick = {onClickHandler}>
-            {index}
+            {/* {index} */}
         </div>   
     );
 }
