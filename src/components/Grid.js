@@ -1,26 +1,42 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect,useState } from 'react';
 import styles from '../components/Grid.module.css'
 import GridItem from './GridItem';
 
 
 const SIZE = 20;
-const Grid = ({indexes}) => {
+const Grid =  ({indexes,speed}) => {
 
 
     const [selectedIndexes,setSelectedIndexes] = useState([]);
     const [startingIndexes,setStartingIndexes] = useState(indexes);
+    const [removeOneStep,setRemoveOneStep] = useState(indexes.length  * speed / 100);
+
+    useEffect(function(){
+        setSelectedIndexes([]);
+        setStartingIndexes(indexes)
+        setRemoveOneStep(indexes.length  * speed / 100)
+    },[indexes,speed])
     
     useEffect(function(){
-
-        console.log({length1 : startingIndexes.length,length2 : selectedIndexes.length});
         if(startingIndexes.length === 0) return;
-
-
         setTimeout(function(){
+            const getRandomInt = (max) => {
+                return Math.floor(Math.random() * (max - 1)) + 1;            
+            }
+
             const chooseRandomIndexes = ( startingIndexes) => {
                 const newStartingIndexes = [...startingIndexes];
                 const removedIndexes  = [];
-                removedIndexes.push(newStartingIndexes.shift());
+                const elementsToRemove = getRandomInt(Math.min(removeOneStep,startingIndexes.length))
+                for (let index = 0; index < elementsToRemove; index++) {
+                    let indexToRemove = getRandomInt(newStartingIndexes.length);
+                    if(newStartingIndexes.length === 1){
+                        indexToRemove  = 0;
+                    }
+                    const removedElement = newStartingIndexes[indexToRemove];
+                    removedIndexes.push(removedElement);
+                    newStartingIndexes.splice(indexToRemove,1);
+                }
                 setStartingIndexes(newStartingIndexes);
                 return removedIndexes;
             }
@@ -31,9 +47,9 @@ const Grid = ({indexes}) => {
                 newSelectedIndexes.push(element);
             })
             setSelectedIndexes(newSelectedIndexes);
-        },100)
+        },50)
        
-    },[selectedIndexes,startingIndexes]);
+    },[selectedIndexes,startingIndexes,removeOneStep]);
 
 
     const gridItems = [];
